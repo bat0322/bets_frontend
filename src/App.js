@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './screens/Login.js';
+import Homescreen from './screens/Homescreen.js';
+import EventBetsScreen from './screens/EventBetsScreen.js';
+import ProfileScreen from './screens/ProfileScreen.js';
+import UserBetsScreen from './screens/UserBetsScreen.js';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path='/login'><Login/></Route>
+        <Route exact path='/'><Homescreen/></Route>
+        <Route path='/profile/:id'><ProfileScreen/></Route>
+        <Route path='/event/:id'><EventBetsScreen/></Route>
+        <Route path='/bets/:id'><UserBetsScreen/></Route>
+      </Switch>
+    </Router>
   );
 }
 
